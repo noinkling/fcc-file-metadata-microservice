@@ -1,10 +1,8 @@
 'use strict';
 const express = require("express");
 const Busboy = require('busboy');
-// const multer = require("multer");
 
 const app = express();
-// const upload = multer();
 
 app.set('views', __dirname);
 app.set('view engine', 'jade');
@@ -32,17 +30,23 @@ const server = app.listen(process.env.PORT || 8080, () => {
 
 
 function getFileSizes(req, res, next) {
+  // Provide an array for the data
   req.fileSizes = [];
   
+  // Use Busboy to work with incoming file(s) as streams
   const busboy = new Busboy({ headers: req.headers });
   
+  // For each incoming file...
   busboy.on("file", (fieldName, file, fileName, transferEncoding, type) => {
     let fileSize = 0;
     
     console.log(`Receiving file "${fileName}" of type "${type}" using "${transferEncoding}" encoding.`);
     
+    // Increment size with each chunk received
     file.on("data", chunk => fileSize += chunk.length)
-    .on("end", () => {
+    
+    // Push object into req.fileSizes array once entire file has been processed
+    file.on("end", () => {
       req.fileSizes.push({
         name: fileName,
         size: fileSize
@@ -52,7 +56,9 @@ function getFileSizes(req, res, next) {
     
   });
   
+  // Continue once all files have been processed
   busboy.on("finish", next);
   
+  // Start the processing
   req.pipe(busboy);
 }
