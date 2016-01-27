@@ -1,4 +1,4 @@
-## <small>Free Code Camp API project</small>
+### <small>Free Code Camp API project</small>
 # File Metadata Microservice
 
 Made according to the instructions here:  
