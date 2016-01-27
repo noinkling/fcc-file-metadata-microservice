@@ -43,7 +43,7 @@ function getFileSizes(req, res, next) {
     console.log(`Receiving file "${fileName}" of type "${type}" using "${transferEncoding}" encoding.`);
     
     // Increment size with each chunk received
-    file.on("data", chunk => fileSize += chunk.length)
+    file.on("data", chunk => fileSize += chunk.length);
     
     // Push object into req.fileSizes array once entire file has been processed
     file.on("end", () => {
@@ -56,7 +56,7 @@ function getFileSizes(req, res, next) {
     
   });
   
-  // Continue once all files have been processed
+  // Continue normally once all files have been processed
   busboy.on("finish", next);
   
   // Start the processing
