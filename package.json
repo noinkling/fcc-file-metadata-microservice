@@ -1,0 +1,26 @@
+{
+  "name": "file-metadata-microservice",
+  "version": "0.1.0",
+  "description": "http://www.freecodecamp.com/challenges/file-metadata-microservice",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noinkling/fcc-file-metadata-microservice.git"
+  },
+  "author": "Malcolm McKeown",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/noinkling/fcc-file-metadata-microservice/issues"
+  },
+  "homepage": "https://github.com/noinkling/fcc-file-metadata-microservice#readme",
+  "dependencies": {
+    "busboy": "^0.2.12",
+    "express": "^4.13.4",
+    "jade": "^1.11.0",
+    "multer": "^1.1.0"
+  }
+}
