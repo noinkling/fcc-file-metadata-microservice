@@ -17,7 +17,7 @@ html
       p(style="margin-top:50px") Select the file you want info for and click "Upload".
       
       form.form-inline(action="/result", method="post", enctype="multipart/form-data")
-        .form-group: input(type="file", name="file")
+        .form-group: input(type="file", name="file", required)
         input.btn.btn-sm.btn-primary(type="submit", value="Upload")
       
       h4(style="margin-top:50px") Response format
